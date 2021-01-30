@@ -1,0 +1,14 @@
+$data=file_get_contents('php://input');//getting fields and values
+$data=explode('=',$data);// split by '='
+$data2=[];
+for($i=1;$i<count($data);$i++){
+    $data2=explode("----------------------------",$data[$i]);
+    for($j=0;$j<count($data2);$j++){
+        $data3=explode(" ",$data2[$j]);
+        if($j/2==0){
+            $data4=explode('"',$data3[0]);
+            $this->data[trim($data4[1])]=trim($data4[2]);
+        }
+    }
+
+}
